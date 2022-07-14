@@ -16,6 +16,8 @@ body
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 50px;
 }
 
 .gameboard
@@ -24,13 +26,16 @@ body
   width: 600px;
   border: 2px solid white;
   background-color: orangered;
+  background-image: linear-gradient(to top left, red, orangered, orange, orangered, red);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   align-items: center;
   justify-items: center;
-  box-shadow: inset -5px -5px 20px black;
-  text-shadow: 2px 2px 5px aqua;
+  margin-top: 100px;
+  box-shadow: inset -5px -5px 20px #111,
+  0 0 20px orange,
+  0 0 40px red;
 }
 
 .gameboard button
@@ -45,5 +50,31 @@ body
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: inset -5px -5px 20px black;
+  box-shadow: inset -5px -5px 20px #111;
+  text-shadow: 2px 2px 5px black;
+  cursor: pointer;
+}
+
+input[type="radio"]
+{
+  position: relative;
+  width: 220px;
+  height: 50px;
+  margin: 10px;
+  outline: none;
+  background: #111;
+  -webkit-appearance: none;
+  cursor: pointer;
+  border-radius: 20px;
+  box-shadow: -5px -5px 20px rgba(255, 255, 255, 0.1),
+              5px 5px 10px rgba(0, 0, 0, 1),
+              inset -2px -2px 5px rgba(255, 255, 255, 0.1),
+              inset 2px 2px 5px rgba(0, 0, 0, 0.5),
+              0 0 0 2px #1f1f1f;
+  transition: .5s;
+}
+
+input[type="radio"]:checked
+{
+  background-image: linear-gradient(to top left, red, orangered, orange, orangered, red);
 }
