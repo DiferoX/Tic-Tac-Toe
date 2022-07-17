@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Tic Tac Toe</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/icon.png">
   </head>
 
   <body>
@@ -12,23 +13,28 @@
 
       <div class="gameboard">
 
-        <button class="divs" id="a1" onclick="displayController()"></button>
-        <button class="divs" id="a2" onclick="displayController()"></button>
-        <button class="divs" id="a3" onclick="displayController()"></button>
+        <button class="divs" id="btn0"></button>
+        <button class="divs" id="btn1"></button>
+        <button class="divs" id="btn2"></button>
 
-        <button class="divs" id="b1" onclick="displayController()"></button>
-        <button class="divs" id="b2" onclick="displayController()"></button>
-        <button class="divs" id="b3" onclick="displayController()"></button>
+        <button class="divs" id="btn3"></button>
+        <button class="divs" id="btn4"></button>
+        <button class="divs" id="btn5"></button>
 
-        <button class="divs" id="c1" onclick="displayController()"></button>
-        <button class="divs" id="c2" onclick="displayController()"></button>
-        <button class="divs" id="c3" onclick="displayController()"></button>
+        <button class="divs" id="btn6"></button>
+        <button class="divs" id="btn7"></button>
+        <button class="divs" id="btn8"></button>
 
       </div>
 
       <div>
         <input type="radio" name="btnRadio" id="">
         <input type="radio" name="btnRadio" id="">
+      </div>
+
+      <div id="showWin">
+        <p id="txt">The Winner is...</p>
+        <button id="reset">Reset</button>
       </div>
 
     </div>

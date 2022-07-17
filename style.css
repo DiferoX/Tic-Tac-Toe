@@ -9,6 +9,20 @@
 body
 {
   background-color: #111;
+  background-image: url(images/tic-tac-toe.jpg);
+  background-size: contain;
+  background-position: center;
+  position: relative;
+}
+
+body::before
+{
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .boardContent
@@ -18,6 +32,7 @@ body
   align-items: center;
   flex-direction: column;
   gap: 50px;
+  position: relative;
 }
 
 .gameboard
@@ -25,7 +40,6 @@ body
   height: 600px;
   width: 600px;
   border: 2px solid white;
-  background-color: orangered;
   background-image: linear-gradient(to top left, red, orangered, orange, orangered, red);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -72,9 +86,44 @@ input[type="radio"]
               inset 2px 2px 5px rgba(0, 0, 0, 0.5),
               0 0 0 2px #1f1f1f;
   transition: .5s;
+  margin-bottom: 200px;
 }
 
 input[type="radio"]:checked
 {
   background-image: linear-gradient(to top left, red, orangered, orange, orangered, red);
+  box-shadow: inset -5px -5px 20px #111;
+}
+
+#showWin
+{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.8);
+  gap: 100px 0;
+}
+
+#showWin p
+{
+  color: white;
+  font-size: 100px;
+  font-weight: bolder;
+  text-shadow: 2px 2px 5px rgb(128, 128, 128);
+}
+
+#showWin button
+{
+  height: 80px;
+  width: 250px;
+  color: white;
+  font-size: 30px;
+  font-weight: bolder;
+  background-image: linear-gradient(to top left, red, orangered, orange, orangered, red);
+  border-radius: 20px;
+  box-shadow: inset -5px -5px 10px #111;
 }
