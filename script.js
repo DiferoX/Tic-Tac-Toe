@@ -3,21 +3,38 @@
 
   let board = document.querySelector('.gameboard');
   let divs = board.querySelectorAll('button');
+  let check = document.getElementById('checked');
   let boardArr = [];
   let sw = true;
+  let turnCpu = 4;
 
 
   divs.forEach(divs => divs.addEventListener ('click', e => 
   {
-    e.target.textContent = sw?'X':'O';
-    e.target.disabled = true;
-    sw = !sw;
+    check.disabled = true;
+
+    if (check.checked == true)
+    {
+      e.target.textContent = 'X';
+      e.target.disabled = true;
+
+      if(turnCpu > 0)
+      {
+        cpu();
+        turnCpu--;
+      }
+
+    }
+    else
+    {
+      e.target.textContent = sw?'X':'O';
+      e.target.disabled = true;
+      sw = !sw;
+    }
 
     addBoard();
 
     options();
-
-    checkDraw();
 
   }));
 
@@ -50,6 +67,8 @@
 
     displayWin(0, 4, 8);
     displayWin(2, 4, 6);
+
+    checkDraw();
   }
 
 
@@ -73,19 +92,41 @@
   
   function showWinner(i, j, k)
   {
-    document.getElementById('btn' + i).style.background = 'greenyellow';
-    document.getElementById('btn' + j).style.background = 'greenyellow';
-    document.getElementById('btn' + k).style.background = 'greenyellow';
+    document.getElementById('btn' + i).style.background = 'orangered';
+    document.getElementById('btn' + j).style.background = 'orangered';
+    document.getElementById('btn' + k).style.background = 'orangered';
   }
 
 
-  let reset = document.getElementById('reset');
+  /* Reset button */
 
-  divs.forEach(divs => reset.addEventListener ('click', () => 
+  let reset1 = document.getElementById('reset1');
+  let reset2 = document.getElementById('reset2');
+
+  divs.forEach(divs => reset1.addEventListener ('click', () => 
   {
     divs.textContent = '';
     divs.style.background = 'white';
     divs.disabled = false;
+
+    check.disabled = false;
+
+    turnCpu = 4;
+
+    let showWin = document.getElementById('showWin');
+    showWin.style.display = 'none';
+
+  }));
+
+  divs.forEach(divs => reset2.addEventListener ('click', () => 
+  {
+    divs.textContent = '';
+    divs.style.background = 'white';
+    divs.disabled = false;
+
+    check.disabled = false;
+
+    turnCpu = 4;
 
     let showWin = document.getElementById('showWin');
     showWin.style.display = 'none';
@@ -95,17 +136,18 @@
 
   function checkDraw()
   {
-    let draw = false;
-    for(let i = 0; i <= boardArr.length; i++)
+    let draw = loop();
+
+    function loop()
     {
-      if(boardArr[i] != "")
+      for(let i = 0; i < boardArr.length; i++)
       {
-        draw = true;
+        if(boardArr[i] == "")
+        {
+          return false;
+        }
       }
-      else
-      {
-        return;
-      }
+      return true;
     }
 
     if(draw == true)
@@ -116,6 +158,23 @@
       showWin.style.display = 'flex';
       txt.textContent = "D R A W";
     }
+  }
+
+
+  function cpu()
+  {
+    let rdm = 0;
+
+    do
+    {
+      rdm = Math.floor(Math.random() * 9);
+      console.log(rdm);
+    }
+    while(document.getElementById('btn' + rdm).textContent !== "")
+
+    document.getElementById('btn' + rdm).textContent = 'O';
+    document.getElementById('btn' + rdm).disabled = true;
+
   }
 
 
